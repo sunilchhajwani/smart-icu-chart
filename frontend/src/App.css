@@ -1,0 +1,520 @@
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font preference */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa; /* A very light, clean background */
+  color: #343a40; /* Darker text for readability */
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #007bff; /* A vibrant primary blue */
+  padding: 25px 20px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.8em;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.App-header nav a {
+  color: #e9ecef; /* Lighter color for navigation links */
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.App-header nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+main {
+  padding: 30px;
+  max-width: 1400px; /* Slightly wider main content area */
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+/* General section styling */
+.patient-details-container > div, .documentation-container, .vitals-input-form, .add-patient-form, .doctor-handover-container, .nurse-handover-container, .bundle-checklist-container {
+  background-color: #ffffff;
+  border-radius: 10px; /* Consistent rounded corners */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  padding: 30px;
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.patient-details-container h2, .documentation-container h3, .vitals-input-form h3, .add-patient-form h3, .doctor-handover-container h3, .nurse-handover-container h3, .bundle-checklist-container h3 {
+  color: #007bff; /* Primary blue for section titles */
+  border-bottom: 2px solid #007bff; /* Matching border */
+  padding-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  width: calc(100% - 24px); /* Adjust for padding and border */
+  padding: 12px;
+  border: 1px solid #ced4da; /* Light grey border */
+  border-radius: 8px; /* More rounded inputs */
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #007bff; /* Highlight on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle glow */
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px; /* Taller textareas */
+  resize: vertical;
+}
+
+/* Button styling */
+button[type="submit"],
+.controls-container button {
+  background-color: #28a745; /* Green for primary actions */
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px; /* More rounded buttons */
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover,
+.controls-container button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary button style for interval controls */
+.controls-container button {
+  background-color: #6c757d; /* Grey for secondary actions */
+}
+
+.controls-container button:hover {
+  background-color: #5a6268;
+}
+
+/* PatientList specific styles */
+.patient-list-container ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger cards */
+  gap: 30px;
+}
+
+.patient-list-container li {
+  background-color: #e9f7ef; /* Light green tint for patient cards */
+  border: 1px solid #d4edda;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.patient-list-container li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.patient-list-container li a {
+  text-decoration: none;
+  color: #007bff; /* Primary blue for links */
+  font-weight: 700;
+  display: block;
+  font-size: 1.2em;
+}
+
+/* PatientDetails specific styles */
+.patient-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.patient-info p {
+  margin-bottom: 10px;
+  font-size: 1.05em;
+}
+
+.patient-info strong {
+  color: #007bff;
+}
+
+.vitals-display .vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Larger vital items */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.vitals-display .vital-item {
+  background-color: #e0f7fa; /* Light blue for vital items */
+  border: 1px solid #b2ebf2;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.vitals-display .vital-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0056b3; /* Darker blue for labels */
+  font-size: 1.1em;
+}
+
+.vitals-display .vital-value {
+  display: block;
+  font-size: 1.8em; /* Larger vital values */
+  font-weight: 700;
+  color: #343a40;
+}
+
+.vitals-display h3 {
+  margin-bottom: 15px;
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.scale-control-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.scale-control-container label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.scale-control-container input[type="range"] {
+  width: 300px; /* Wider slider */
+  vertical-align: middle;
+}
+
+.chart-container {
+  margin-top: 25px;
+  height: 500px; /* Taller chart */
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures rounded corners apply to table */
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+table th {
+  background-color: #007bff; /* Blue header */
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Zebra striping */
+}
+
+table tbody tr:hover {
+  background-color: #e9ecef; /* Highlight on hover */
+}
+
+/* Documentation styles */
+.documentation-container {
+  margin-top: 25px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.documentation-container h3 {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.documentation-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.documentation-section {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.documentation-section h4 {
+  margin-top: 0;
+  color: #007bff;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.documentation-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.documentation-form .form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.documentation-form input,
+.documentation-form textarea {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.documentation-form input[type="datetime-local"] {
+  width: auto;
+}
+
+.documentation-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  align-self: flex-end;
+}
+
+.documentation-form button:hover {
+  background-color: #0056b3;
+}
+
+.documentation-list {
+  max-height: 350px; /* Slightly taller list */
+  overflow-y: auto;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+}
+
+.documentation-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.documentation-list li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.documentation-list li:last-child {
+  border-bottom: none;
+}
+
+.medication-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.medication-item.administered {
+  background-color: #d4edda; /* Light green for administered */
+}
+
+.medication-info {
+  flex-grow: 1;
+}
+
+.administer-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.administer-button.administered {
+  background-color: #6c757d; /* Grey for administered */
+}
+
+.note-item, .procedure-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.note-meta, .procedure-meta {
+  text-align: right;
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* Bundle Checklist Specific Styles */
+.bundle-checklist-container .bundle-selection {
+  margin-bottom: 20px;
+}
+
+.bundle-checklist-container .bundle-selection label {
+  font-weight: 600;
+  margin-right: 10px;
+  color: #495057;
+}
+
+.bundle-checklist-container .bundle-selection select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 1em;
+}
+
+.bundle-checklist-container .selected-bundle-details h4 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.bundle-checklist-container .selected-bundle-details p {
+  font-style: italic;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.bundle-checklist-container .bundle-items ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bundle-checklist-container .bundle-items li {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bundle-checklist-container .bundle-items li:last-child {
+  margin-bottom: 0;
+}
+
+.bundle-checklist-container .bundle-items input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  accent-color: #28a745; /* Green checkbox */
+}
+
+.bundle-checklist-container .bundle-items label {
+  font-size: 1em;
+  color: #343a40;
+  cursor: pointer;
+}
